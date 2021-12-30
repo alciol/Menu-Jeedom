@@ -1,0 +1,546 @@
+<meta name="viewport" content="initial-scale = 1, maximum-scale = 1, user-scalable = no, width=device-width"/>
+<!--initial-scale = zoum au démarrage de la page web pour ajuste le disgn parfaitement à la tablette-->
+<!--maximum-scale = zoum maixmum autoriser par l'utilsateur-->
+<!--user-scalable = autorisation utilsation zoum-->
+
+
+<LINK href="montheme/menu_tablette/perso.css" rel="stylesheet" type="text/css">
+
+<!----------------------------------------------------------------------------------------->  
+<!------------------------- Menu icone (A personnaliser) ---------------------------------->
+<!----------------------------------------------------------------------------------------->
+  
+<div class="menu_top">
+
+<ul class="monmenu"> <!--Menu horizontal du desgin-->
+
+  	<!--Ajouter des ligne pour ajouter des icones au menu-->
+  	<!--id:'XX' numéro de design a afficher-->
+    <!--planHeader_id=XX metre le même numéro que id-->
+  	<!--<img src="montheme/images/XXX.png mettre nom icone souhaité-->
+  
+  	<!--Exemple : -->  
+  	<!--<a id='1' onClick="planHeader_id=1; displayPlan();"><li class="monmenu"><div class="imagette"><img src="montheme/images/icon_mini_jeedom.png" height=50px width=50px></div></li></a>-->
+	
+</ul>
+</div>
+
+<!----------------------------------------------------------------------------------------->  
+<!------------------ Information jeedom/tablette à droite du menu ------------------------->
+<!----------------------------------------------------------------------------------------->
+ 
+  <!--Inutile de modifier cette partie, tous sera personnalisable juste en dessous dans
+  la partie "Variable Globale"!.-->
+  
+  <!--Ce menu est composé de tous les résumé par défaut de Jeedom. Si vous avez 
+  ajouté des résumés dans jeedom, veuillez compléter la liste des Résumer
+  de Jeedom sous le même format, et de mettre à jour la variable "globalResume".-->
+  
+<div class="menu_right">
+<ul class="monmenu">
+  
+  	<!--Liste des Résumé par défaut de Jeedom-->
+    <a><li id="resume" style ="display:inline-block; text-align: center; position:relative; bottom:-15px;">
+      <div>
+      <a id="security" style="padding:3px;">
+        <i id="iconesecurity" class="icon jeedom-alerte2 fa-lg" style='padding:0px;'></i>
+        <sup id='nbsecurity' style='font-size:0.9em;'>0</sup>      
+      </a>
+      <a id="door" style="padding:3px;">
+        <i id="iconedoor" class="icon jeedom-porte-ferme fa-lg" style='padding:0px;'></i>
+        <sup id='nbdoor' style='font-size:0.9em;'>0</sup> 
+      </a>
+      <a id="windows" style="padding:3px;">
+        <i id="iconewindows" class="icon jeedom-fenetre-ferme fa-lg"></i>
+        <sup id='nbwindows' style='font-size:0.9em;'>0</sup>
+      </a>
+      <a id="shutter" style="padding:3px;">
+        <i id="iconeshutter" class="icon jeedom-volet-ouvert fa-lg"></i>
+        <sup id='nbshutter' style='font-size:0.9em;'>0</sup>
+      </a>
+      <a id="motion" style="padding:3px;">
+        <i id="iconemotion" class="icon jeedom-mouvement fa-lg"></i>
+        <sup id='nbmotion' style='font-size:0.9em;'>0</sup>
+      </a>
+      <a id="light" style="padding:3px;">
+        <i id="iconelight" class="icon jeedom-lumiere-off fa-lg"></i>
+        <sup id='nblight' style='font-size:0.9em;'>0</sup>
+      </a>
+      <a id="outlet" style="padding:3px;">
+        <i id="iconeoutlet" class="icon jeedom-prise fa-lg"></i>
+        <sup id='nboutlet' style='font-size:0.9em;'>0</sup>
+      </a>
+      <a id="temperature"style='padding:3px;'>
+        <i id="iconetemperature" class="icon jeedom-thermo-moyen fa-lg"></i>
+        <sup style='font-size:0.9em;'>
+          <span id='nbtemperature'>0</span>
+          <span>°C</span>
+        </sup>
+      </a>
+      <a id="humidity"style="padding:3px;">
+        <i id="iconehumidity" class="icon fa fa-tint fa-lg"></i>
+        <sup style='font-size:0.9em;'>
+          <span id='nbhumidity'>0</span>
+          <span>%</span>
+        </sup>
+      </a>
+      <a id="luminosity"style="padding:3px;">
+        <i id="iconeluminosity" class="icon meteo-soleil fa-lg"></i>
+        <sup style='font-size:0.9em;'>
+          <span id='nbluminosity'>0</span>
+          <span>lx</span>
+        </sup>
+      </a>
+      <a id="power"style="padding:3px;">
+        <i id="iconepower" class="icon fa fa-bolt fa-lg"></i>
+        <sup style='font-size:0.9em;'>
+          <span id='nbpower'>0</span>
+          <span>W</span>
+        </sup>
+      </a>
+      </div>
+      <div id="dateTime">.</div>
+    </li></a>
+  
+  	<a style="padding:5px"></a>
+  
+  	<!--Icone meteo + temperature exterieur-->
+    <a><li id="meteo" class="monmenu_right" style="padding-top:22px;">
+      <div id="iconemeteo" class="icone meteo-nuage-soleil-pluie fa-3x" style="position:absolute; top:5px; padding-left:15px;"></div>
+      <div style="position:relative; bottom:-20px; font-weight: bold; font-size:1.1em;">
+        <span id="tempmeteo">0</span>
+        <span>°C</span>
+      </div>
+    </li></a>
+    
+    <!--Affichage message jeedom + upgrade disponible-->
+    <a><li class="monmenu_right"><div id="moduleAlerte" class="content-md">
+      <a id="messageModal" style="padding:1px;">
+        <span class="btn btn-warning" id="messageWarning" title="Nombre de messages" style></span>
+      </a>
+      <a href="index.php?v=d&p=update" style="padding:1px;">
+        <span class="btn btn-warning" id="updateDanger"  title="Nombre de mises à jour"></span>
+      </a>
+      </div></li></a>
+	
+    <!--Icone presence tension avec image par défaut-->
+    <a><li id="presenceTension" class="monmenu_right"><img src="montheme/images/tension_presente.png" height=60px width=60px></li></a>
+
+    <!--Icone niveau batterie tablette avec image par défaut-->
+    <a><li id="Batterie" class="monmenu_right" style="padding-top:18px;">
+      <div style="position:absolute; padding-top:5px; font-size: 1.2em; font-weight:bold; width:80px; height:70; color:black;">
+        <span id="niveauBatterie">ERROR</span>
+        <span>%</span>
+      </div>
+      <div id="imageBatterie"><img src="montheme/images/ba_battery1_100.png" height=34px width=60px></div>
+    </li></a>
+</ul>
+</div>
+
+<!--déclaration de la Modale (ne pas toucher)-->
+<div id="md_overviewSummary" style="overflow-x: hidden;">
+  <div id="summaryEqlogics"></div>
+</div>
+  
+<!----------------------------------------------------------------------------------------->  
+<!---------------------------------- script ----------------------------------------------->
+<!----------------------------------------------------------------------------------------->
+<script type="text/javascript" src="montheme/menu_tablette/modal.js"></script>
+<script>
+/*----------------------------------------------------------------------------------------*/
+/*--------------------- Variable globale (A personnaliser) -------------------------------*/
+/*----------------------------------------------------------------------------------------*/
+  /*resumé*/
+  /*mettre display à true pour que l'icone du résumé soit visible*/
+  var globalResume = [{summary: 'security', 	EquipementID: [], 		display: false},
+                      {summary: 'door',			EquipementID: [], 		display: false},
+                      {summary: 'windows',		EquipementID: [], 		display: false},
+                      {summary: 'shutter', 		EquipementID: [], 		display: false},
+                      {summary: 'motion', 		EquipementID: [], 		display: false},
+                      {summary: 'light', 		EquipementID: [], 		display: false},
+                      {summary: 'outlet',		EquipementID: [], 		display: false},
+                      {summary: 'temperature', 	EquipementID: [], 		display: false},
+                      {summary: 'humidity', 	EquipementID: [], 		display: false},
+                      {summary: 'luminosity', 	EquipementID: [], 		display: false},
+                      {summary: 'power', 		EquipementID: [], 		display: false}];
+  
+  /*Affficher date en dessous du résumé*/
+  var DisplayDate = true; //true=visible ; false=nom visible
+  var DisplayTime = true; //true=visible ; false=nom visible
+  
+  /*update meteo*/
+  var weatherEqLogicId = ''; /*mettre l'ID de l'équipement weather / laisse vide pour ne pas affiché l'icone sur le design*/
+  var IdTemperatureExt = ''; /*Mettre ID de l'info température ext / laisse vide pour ne pas affiché l'icone sur le design*/
+  var IdEquipementMeteo = ['']; /*Id équipement jeedom qui gère la meteo, ex ['id_1','id_2'], laisser vide si non utilisé*/
+  var TitreModalMeteo = 'Meteo'; /*titre de la modale meteo*/
+  
+  /*update présence tension*/
+  var IdPresenceTension = ''; /*Mettre ID de l'info présene tension / laisse vide pour ne pas affiché l'icone sur le design*/
+  var URLTensionOK = 'montheme/images/tension_presente.png'; /*url icone tension réseau ok*/
+  var URLTensionNOK = 'montheme/images/tension_absente.png'; /*url icone tension réseau nok*/
+  var IdEquipementTension = []; /*Id équipement jeedom qui gère la tension réseau, ex ['id_1','id_2'], laisser vide si non utilisé*/
+  var TitreModalTension = 'Gestion Onduleur'; /*titre de la modale réseau*/
+  
+  /*update niveau batterie*/
+  var IdNiveauBatterie = ''; /*Mettre ID de l'info niveau batterie / laisse vide pour ne pas affiché l'icone sur le design*/
+  var URLBatterieERROR = 'montheme/images/ba_battery1_error.png'; /*url icone niveau batterire error*/
+  var URLBatterieNiveau = 'montheme/images/ba_battery1'; /*url icone niveau batterire ok*/
+  var IdEquipementBatterie = []; /*Id équipement jeedom qui gère la tension réseau, ex ['id_1','id_2'], laisser vide si non utilisé*/
+  var TitreModalBatterie = 'Gestion Charge Tablette'; /*titre de la modale batterie*/
+  
+/*----------------------------------------------------------------------------------------*/
+/*--------------------------- CODE JS, NE PAS TOUCHER ------------------------------------*/
+/*----------------------------------------------------------------------------------------*/
+
+  //UI Time display:
+  if (DisplayTime || DisplayDate) {
+    setInterval(function() {
+      var dateDesign = new Date;
+      dateDesign.setTime((new Date).getTime() + ((new Date).getTimezoneOffset() + serverTZoffsetMin)*60000 + clientServerDiffDatetime);
+      if (DisplayTime && !DisplayDate) {
+        $('#dateTime').text(dateDesign.toLocaleTimeString());
+      } else if (!DisplayTime && DisplayDate) {
+        $('#dateTime').text(dateDesign.toLocaleString('fr-FR',{weekday: 'long', day: 'numeric', month: 'short'}));
+      } else {
+        $('#dateTime').text(dateDesign.toLocaleString('fr-FR',{weekday: 'long', day: 'numeric', month: 'short'}) + '  ' + dateDesign.toLocaleTimeString());
+      }
+    }, 1000)
+  } else {
+    $('#dateTime').hide();
+    $('#resume').css( "bottom", "0px" );
+  }
+
+  /*Action réaliser une fois la page chargé*/
+  $(document).ready(function(){
+    /*Modifier class selected menu*/
+    var planID = '#'+(location.search.split('plan_id' + '=')[1] || '').split('&')[0];
+    $(planID+' li').addClass('selected');
+    
+    /*Chargement valeur résumé global au lancement de la page*/
+    var paramsSpecifics = {};
+    var params = $.extend({}, jeedom.private.default_params, paramsSpecifics);
+    var paramsAJAX = jeedom.private.getParamsAJAX(params);
+    paramsAJAX.url = 'montheme/menu_tablette/montheme.ajax.php';
+    
+    for(let i = 0; i < globalResume.length; i++) {
+      /*Test si l'icone résumé existe*/
+      if($('#' + globalResume[i]['summary']).html() == undefined || $('#icone' + globalResume[i]['summary']).html() == undefined || $('#nb' + globalResume[i]['summary']).html() == undefined) {
+        continue;
+      }
+      
+      /*Cache ou Affiche les icones des résumé*/
+      if(!globalResume[i]['display']) { 
+        $('#'+globalResume[i]['summary']).hide();
+        continue; 
+      }
+      
+      paramsAJAX.data = {
+        action: 'getGlobalSummary',
+        key: globalResume[i]['summary'],
+      };
+      $.ajax(paramsAJAX)
+        .done(function( retour ) {
+        /*Modifier les icones en fonction de la valeur; exemple fenètre ouverte/fermer etc...*/        
+        if (globalResume[i]['summary'] == 'door') {
+          if (retour.result == '0' || retour.result == 0 ) { document.getElementById('iconedoor').className = "icon jeedom-porte-ferme fa-lg"; }
+          else { document.getElementById('iconedoor').className = "icon jeedom-porte-ouverte fa-lg"; }
+        }
+        if (globalResume[i]['summary'] == 'windows') {
+          if (retour.result == '0' || retour.result == 0 ) { document.getElementById('iconewindows').className = "icon jeedom-fenetre-ferme fa-lg"; }
+          else { document.getElementById('iconewindows').className = "icon jeedom-fenetre-ouverte fa-lg"; }
+        }
+        if (globalResume[i]['summary'] == 'light') {
+          if (retour.result == '0' || retour.result == 0 ) { document.getElementById('iconelight').className = "icon jeedom-lumiere-off fa-lg"; }
+          else { document.getElementById('iconelight').className = "icon jeedom-lumiere-on fa-lg"; }
+        }
+        /*Affectation de la valeur a l'icone résumé*/
+        $('#nb' + globalResume[i]['summary']).empty().append(retour.result);        
+      });
+      
+      /*Recherche les ID des équipements pour chaque résumer*/
+      jeedom.object.all({
+        success : function(_params) {
+          for (var k in _params) {
+            jeedom.object.getEqLogicsFromSummary({
+              id: _params[k].id,
+              summary: globalResume[i]['summary'],
+              success : function (data) {
+                if (data != null) {
+                  for (var l in data) {
+                    globalResume[i]['EquipementID'].push(data[l].id);
+                  }
+                }
+              }
+            });
+          }
+        }
+      });
+      
+      /*Création des buton résumé*/
+      $('#' + globalResume[i]['summary']).on({
+        'click': function(event) {
+          getSummaryHtmlPerso(globalResume[i]['EquipementID'], 'Equipement résumer ' + globalResume[i]['summary'] );
+        }
+      });      
+    }    
+  });
+  
+  /* Resumé */
+  $('body').on('jeeObject::summary::update', function (_event,_options) {
+    var object = null;
+    var keySpan = null;
+    for(var i in _options){
+      object = $('.objectSummary' + _options[i].object_id);
+      if (object.html() == undefined || object.attr('data-version') == undefined || _options[i].object_id != 'global') {
+        continue;
+      }
+      if(isset(_options[i]['keys'])){
+        for(var j in _options[i]['keys']){
+          keySpan = $('#nb'+j);
+          if(keySpan.html() != undefined){
+            if(_options[i]['keys'][j]['value'] === null){
+              continue;
+            }
+            /*Modifier les icones en fonction de la valeur; exemple fenètre ouverte/fermer etc...*/
+            if (j == 'door') {
+              if (_options[i]['keys'][j]['value'] == '0' || _options[i]['keys'][j]['value'] == 0 ){ document.getElementById('iconedoor').className = "icon jeedom-porte-ferme fa-lg"; }
+              else { document.getElementById('iconedoor').className = "icon jeedom-porte-ouverte fa-lg"; }
+            }
+            if (j == 'windows') {
+              if (_options[i]['keys'][j]['value'] == '0' || _options[i]['keys'][j]['value'] == 0 ) { document.getElementById('iconewindows').className = "icon jeedom-fenetre-ferme fa-lg"; }
+              else { document.getElementById('iconewindows').className = "icon jeedom-fenetre-ouverte fa-lg"; }
+            }
+            if (j == 'light') {
+              if (_options[i]['keys'][j]['value'] == '0' || _options[i]['keys'][j]['value'] == 0 ) { document.getElementById('iconelight').className = "icon jeedom-lumiere-off fa-lg"; }
+              else { document.getElementById('iconelight').className = "icon jeedom-lumiere-on fa-lg"; }
+            }
+            keySpan.empty().append(_options[i]['keys'][j]['value']);
+          }
+        }
+      }
+    }
+  });
+  
+  /* Nombre de Messages */
+  jeedom.message.number({
+    error: function (error) {
+      $('#div_alert').showAlert({message: error.message, level: 'danger'});
+    },
+    success : function (_number) {
+      if (_number == 0 || _number == '0') {
+        $('#messageWarning').hide();
+      } else {
+        $('#messageWarning').html(_number).show();
+        $('#messageModal').on('click',function(){
+          $('#md_modal').dialog({title: "{{Centre de Messages}}"}).load('index.php?v=d&p=message&ajax=1').dialog('open');
+        });
+      }
+      if ($("#messageWarning").is(":hidden") == true && $("#updateDanger").is(":hidden") == true) {
+        $('#moduleAlerte').css( "padding-top", "20px" );
+      } else {
+        $('#moduleAlerte').css( "padding-top", "15px" );
+      }
+    }
+  });
+  $('body').on('message::refreshMessageNumber', function (_event,_options) {
+    jeedom.message.number({
+      error: function (error) {
+        $('#div_alert').showAlert({message: error.message, level: 'danger'});
+      },
+      success : function (_number) {
+        if (_number == 0 || _number == '0') {
+          $('#messageWarning').hide();
+        } else {
+          $('#messageWarning').html(_number).show();
+          $('#messageModal').on('click',function(){
+            $('#md_modal').dialog({title: "{{Centre de Messages}}"}).load('index.php?v=d&p=message&ajax=1').dialog('open');
+          });
+        }
+        if ($("#messageWarning").is(":hidden") == true && $("#updateDanger").is(":hidden") == true) {
+          $('#moduleAlerte').css( "padding-top", "20px" );
+        } else {
+          $('#moduleAlerte').css( "padding-top", "15px" );
+        }
+      }
+    });
+  });
+  
+  /* Meteo */
+  jeedom.cmd.update[IdTemperatureExt] = function(_options){
+    if (IdTemperatureExt == '' || weatherEqLogicId == '') {
+      $('#meteo').hide();
+    }else{
+      $('#meteo').show();
+      jeedom.cmd.execute({  
+        id: IdTemperatureExt,
+        success:  function(valeur_courante) {
+          $('#tempmeteo').empty().append(valeur_courante);
+          
+          var paramsSpecifics = {};
+          var params = $.extend({}, jeedom.private.default_params, paramsSpecifics);
+          var paramsAJAX = jeedom.private.getParamsAJAX(params);
+          paramsAJAX.url = 'montheme/menu_tablette/montheme.ajax.php';
+          paramsAJAX.data = {
+            action: 'ConditionAsText',
+            weatherEqLogicId: weatherEqLogicId,
+          };
+          $.ajax(paramsAJAX)
+            .done(function( condition ) {
+            switch (condition.result["condition"]) {
+              case "wind" :
+                $("#iconemeteo").addClass("icon meteo-vent fa-3x");
+                break;
+              case "sun" :
+                if (condition.result["periode"] == 'day') { $("#iconemeteo").addClass("icon meteo-soleil fa-3x"); }
+                else { $("#iconemeteo").addClass("icon nature-night2 fa-3x"); }
+                break;
+              case "rain" :
+                $("#iconemeteo").addClass("icon meteo-pluie fa-3x");
+                break;
+              case "storm" :
+                $("#iconemeteo").addClass("icon meteo-orage fa-3x");
+                break;
+              case "mist" :
+                $("#iconemeteo").addClass("icon meteo-brouillard fa-3x");
+                break;
+              case "snow" :
+                $("#iconemeteo").addClass("icon meteo-neige fa-3x");
+                break;
+              case "cloud" :
+                if (condition.result["periode"] == 'day') { $("#iconemeteo").addClass("icon meteo-nuageux fa-3x"); }
+                else { $("#iconemeteo").addClass("icon meteo-nuit-nuage fa-3x"); }
+                break;
+              default:
+                $("#iconemeteo").addClass("icon meteo-nuage-soleil-pluie fa-3x");
+            }
+          });
+        }
+      });
+      
+      /*Button*/
+      $('#meteo').on({
+        'click': function(event) {
+          if (IdEquipementMeteo != null && IdEquipementMeteo != '') { 
+            getSummaryHtmlPerso(IdEquipementMeteo, TitreModalMeteo);
+          }
+        }
+      },);
+    }
+  }; 
+  jeedom.cmd.update[IdTemperatureExt]();
+
+  /* Nombre de Mises à jour */
+  jeedom.update.number({
+    error: function (error) {
+      $('#div_alert').showAlert({message: error.message, level: 'danger'});
+    },
+    success : function (_number) {
+      if (_number == 0 || _number == '0') {
+        $('#updateDanger').hide();
+      } else {
+        $('#updateDanger').html(_number).show();
+      }
+      if ($("#messageWarning").is(":hidden") == true && $("#updateDanger").is(":hidden") == true) {
+        $('#moduleAlerte').css( "padding-top", "20px" );
+      } else {
+        $('#moduleAlerte').css( "padding-top", "15px" );
+      }
+    }
+  });
+  $('body').on('update::refreshUpdateNumber', function (_event,_options) {
+    jeedom.update.number({
+      error: function (error) {
+        $('#div_alert').showAlert({message: error.message, level: 'danger'});
+      },
+      success : function (_number) {
+        if (_number == 0 || _number == '0') {
+          $('#updateDanger').hide();
+        } else {
+          $('#updateDanger').html(_number).show();
+        }
+        if ($("#messageWarning").is(":hidden") == true && $("#updateDanger").is(":hidden") == true) {
+          $('#moduleAlerte').css( "padding-top", "20px" );
+        } else {
+          $('#moduleAlerte').css( "padding-top", "15px" );
+        }
+      }
+    });
+  });
+  
+  /* Tension réseau */
+  jeedom.cmd.update[IdPresenceTension] = function(_options){
+    if (IdPresenceTension == '') {
+      $('#presenceTension').hide();
+    }else{
+      $('#presenceTension').show();
+      jeedom.cmd.execute({  
+        id: IdPresenceTension,
+        success:  function(valeur_courante) {
+          if (valeur_courante == '1' || valeur_courante == 1 || valeur_courante == '99' || valeur_courante == 99 || valeur_courante == 'on') {
+            $('#presenceTension').empty().append('<img src="' + URLTensionOK + '" height=60px width=60px>');            
+          } else {
+            $('#presenceTension').empty().append('<img src="' + URLTensionNOK + '" height=60px width=60px>');
+          }
+        }
+      });
+      
+      /*Button*/
+      $('#presenceTension').on({
+        'click': function(event) {
+          if (IdEquipementTension != null && IdEquipementTension != '') { 
+            getSummaryHtmlPerso(IdEquipementTension, TitreModalTension);
+          }
+        }
+      },);
+    }
+  }; 
+  jeedom.cmd.update[IdPresenceTension]();
+  
+  /* Niveau batterie */
+  jeedom.cmd.update[IdNiveauBatterie] = function(_options){
+    if (IdNiveauBatterie == '') {
+      $('#Batterie').hide();
+    }else{
+      $('#Batterie').show();
+      jeedom.cmd.execute({
+        id: IdNiveauBatterie,
+        success:  function(State) {
+          State = parseFloat(State);
+          var srcPictureID;
+          if (State == "0"){
+            srcPictureID = "_0";
+          }else if (State > "0" && State <= "20"){
+            srcPictureID = "_20";
+          } else if (State > "20" && State <= "40"){
+            srcPictureID = "_40";
+          } else if (State > "40" && State <= "60"){
+            srcPictureID = "_60";
+          } else if (State > "60" && State <= "80"){
+            srcPictureID = "_80";
+          } else if (State > "80" && State <= "100"){
+            srcPictureID = "_100";
+          } else {
+            srcPictureID = "error";
+          }
+          if (srcPictureID == "error"){
+            $('#imageBatterie').empty().append('<img src="' + URLBatterieERROR + '" height=30px width=50px>');
+            $('#niveauBatterie').empty().append('ERROR');
+          }else{
+            $('#imageBatterie').empty().append('<img src="' + URLBatterieNiveau + srcPictureID + '.png" height=34px width=60px>'); /*Pour modifier l'image niveau batterie*/
+            $('#niveauBatterie').empty().append(State);
+          }
+        }
+      });
+      
+      /*Button*/
+      $('#Batterie').on({
+        'click': function(event) {
+          if (IdEquipementBatterie != null && IdEquipementBatterie != '') { 
+            getSummaryHtmlPerso(IdEquipementBatterie, TitreModalBatterie);
+          }
+        }
+      },);
+  	}
+  }; 
+  jeedom.cmd.update[IdNiveauBatterie]();
+</script>
